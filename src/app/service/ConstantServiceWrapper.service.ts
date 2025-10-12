@@ -13,6 +13,10 @@ export class ConstantServiceWrapper {
     if (localStorage.getItem("token")) return localStorage.getItem("token");
   }
 
+  getMyLang() {
+    if (localStorage.getItem("lang")) return localStorage.getItem("lang");
+  }
+
   serverSideErrorHandler(error) {
     if (error) {
       this.toastr.error(error.message);
@@ -22,7 +26,7 @@ export class ConstantServiceWrapper {
   async checkAdmin() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -39,7 +43,7 @@ export class ConstantServiceWrapper {
   loginAdmin(conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -56,7 +60,7 @@ export class ConstantServiceWrapper {
   getAllStores(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -71,7 +75,7 @@ export class ConstantServiceWrapper {
   getAllCity(country_id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -86,7 +90,7 @@ export class ConstantServiceWrapper {
   getAllCityAdmin() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -98,7 +102,7 @@ export class ConstantServiceWrapper {
   updateSettings(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -115,7 +119,7 @@ export class ConstantServiceWrapper {
   getSittings() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -130,7 +134,7 @@ export class ConstantServiceWrapper {
   getSingleSittings(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -145,7 +149,7 @@ export class ConstantServiceWrapper {
   updateStatic(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -162,7 +166,7 @@ export class ConstantServiceWrapper {
   getStatic() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -177,7 +181,7 @@ export class ConstantServiceWrapper {
   getSingleStatic(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -192,7 +196,7 @@ export class ConstantServiceWrapper {
   updateContact(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -209,7 +213,7 @@ export class ConstantServiceWrapper {
   getContact() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -224,7 +228,7 @@ export class ConstantServiceWrapper {
   getSingleContact(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -239,7 +243,7 @@ export class ConstantServiceWrapper {
   getReason() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -254,7 +258,7 @@ export class ConstantServiceWrapper {
   getSingleReason(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -269,7 +273,7 @@ export class ConstantServiceWrapper {
   addReason(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -286,7 +290,7 @@ export class ConstantServiceWrapper {
   updateReason(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -303,7 +307,7 @@ export class ConstantServiceWrapper {
   deleteReason(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -320,7 +324,7 @@ export class ConstantServiceWrapper {
   getWelcome() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -335,7 +339,7 @@ export class ConstantServiceWrapper {
   getSingleWelcome(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -350,7 +354,7 @@ export class ConstantServiceWrapper {
   addWelcome(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -366,7 +370,7 @@ export class ConstantServiceWrapper {
   updateWelcome(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -382,7 +386,7 @@ export class ConstantServiceWrapper {
   deleteWelcome(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -399,7 +403,7 @@ export class ConstantServiceWrapper {
   getAdvs() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -411,7 +415,7 @@ export class ConstantServiceWrapper {
   getSingleAdvs(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -426,7 +430,7 @@ export class ConstantServiceWrapper {
   addAdvs(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -442,7 +446,7 @@ export class ConstantServiceWrapper {
   updateAdvs(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -458,7 +462,7 @@ export class ConstantServiceWrapper {
   deleteAdvs(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -475,7 +479,7 @@ export class ConstantServiceWrapper {
   getCategoy() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -490,7 +494,7 @@ export class ConstantServiceWrapper {
   getSingleCategoy(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -505,16 +509,15 @@ export class ConstantServiceWrapper {
   addCategoy(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
-        "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
       }),
     };
     return this.http.post(
       appConstant.BASE_URL + "/constant/category",
-      JSON.stringify(content),
+      content,
       httpOptions
     );
   }
@@ -522,16 +525,15 @@ export class ConstantServiceWrapper {
   updateCategoy(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
-        "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
       }),
     };
     return this.http.post(
       appConstant.BASE_URL + "/constant/category/" + id,
-      JSON.stringify(content),
+      content,
       httpOptions
     );
   }
@@ -539,7 +541,7 @@ export class ConstantServiceWrapper {
   deleteCategoy(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -553,10 +555,170 @@ export class ConstantServiceWrapper {
     );
   }
 
+
+  getType() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + "/constant/type",
+      httpOptions
+    );
+  }
+
+  getSingleType(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + "/constant/type/" + id,
+      httpOptions
+    );
+  }
+
+  addType(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/constant/type",
+      content,
+      httpOptions
+    );
+  }
+
+  updateType(id, content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/constant/type/" + id,
+      content,
+      httpOptions
+    );
+  }
+
+  deleteType(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/constant/delete-type/" + id,
+      {},
+      httpOptions
+    );
+  }
+
+  getSubCategoy(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + "/constant/allsubcategory/"+id,
+      httpOptions
+    );
+  }
+
+  getSingleSubCategoy(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + "/constant/subcategory/" + id,
+      httpOptions
+    );
+  }
+
+  addSubCategoy(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/constant/subcategory",
+      content,
+      httpOptions
+    );
+  }
+
+  updateSubCategoy(id, content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/constant/subcategory/" + id,
+      content,
+      httpOptions
+    );
+  }
+
+  deleteSubCategoy(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/constant/delete-subcategory/" + id,
+      {},
+      httpOptions
+    );
+  }
+
+
   getCountry() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -571,7 +733,7 @@ export class ConstantServiceWrapper {
   getSingleCountrty(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -586,7 +748,7 @@ export class ConstantServiceWrapper {
   addCountry(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -603,7 +765,7 @@ export class ConstantServiceWrapper {
   updateCountry(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -620,7 +782,7 @@ export class ConstantServiceWrapper {
   deleteCountry(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -637,7 +799,7 @@ export class ConstantServiceWrapper {
   getComplaints(page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -656,7 +818,7 @@ export class ConstantServiceWrapper {
   replyComplaints(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -673,7 +835,7 @@ export class ConstantServiceWrapper {
   deleteComplaints(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -690,7 +852,7 @@ export class ConstantServiceWrapper {
   getCity(country_id, page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -711,7 +873,7 @@ export class ConstantServiceWrapper {
   getSingleCity(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -726,7 +888,7 @@ export class ConstantServiceWrapper {
   addCity(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -743,7 +905,7 @@ export class ConstantServiceWrapper {
   updateCity(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -760,7 +922,7 @@ export class ConstantServiceWrapper {
   deleteCity(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -777,7 +939,7 @@ export class ConstantServiceWrapper {
   getPlaces(city_id, page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -795,10 +957,25 @@ export class ConstantServiceWrapper {
     );
   }
 
+  getAllPlacesDelivery(supplier_id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + "/constant/all-place-delivery/" + supplier_id,
+      httpOptions
+    );
+  }
+
   getAllPlaces(city_id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -813,7 +990,7 @@ export class ConstantServiceWrapper {
   getSinglePlace(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -828,7 +1005,7 @@ export class ConstantServiceWrapper {
   addPlace(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -845,7 +1022,7 @@ export class ConstantServiceWrapper {
   updatePlace(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -862,7 +1039,7 @@ export class ConstantServiceWrapper {
   deletePlace(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -879,7 +1056,7 @@ export class ConstantServiceWrapper {
   getUsers(page, limit, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -896,7 +1073,7 @@ export class ConstantServiceWrapper {
   getSingleUser(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -912,7 +1089,7 @@ export class ConstantServiceWrapper {
   getUsersExcel(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -929,7 +1106,7 @@ export class ConstantServiceWrapper {
   blockUnblockUser(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -946,7 +1123,7 @@ export class ConstantServiceWrapper {
   sendUserSMS(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -963,7 +1140,7 @@ export class ConstantServiceWrapper {
   sendUserNotification(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -980,7 +1157,7 @@ export class ConstantServiceWrapper {
   updateUser(conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -996,7 +1173,7 @@ export class ConstantServiceWrapper {
   getUserAddress(id, page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1012,7 +1189,7 @@ export class ConstantServiceWrapper {
   addAddressDiscount(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1026,10 +1203,10 @@ export class ConstantServiceWrapper {
     );
   }
 
-  getUserOrders(id, page, limit) {
+  getUserOrders(id, status, page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1037,15 +1214,31 @@ export class ConstantServiceWrapper {
       }),
     };
     return this.http.get(
-      appConstant.BASE_URL + `/users/orders/${id}?page=${page}&limit=${limit}`,
+      appConstant.BASE_URL + `/users/orders/${id}?page=${page}&limit=${limit}&status=${status}`,
       httpOptions
     );
   }
 
-  getProviderOrders(id, page, limit) {
+  getUserOrdersExcel(id, status) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + `/users/orders-excel/${id}?status=${status}`,
+      httpOptions
+    );
+  }
+
+  getProviderOrders(id, status, page, limit) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1054,7 +1247,76 @@ export class ConstantServiceWrapper {
     };
     return this.http.get(
       appConstant.BASE_URL +
-        `/providers/orders/${id}?page=${page}&limit=${limit}`,
+        `/providers/orders/${id}?page=${page}&limit=${limit}&status=${status}`,
+      httpOptions
+    );
+  }
+
+  getProviderOrdersExcel(id, status) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL +
+        `/providers/orders-excel/${id}?status=${status}`,
+      httpOptions
+    );
+  }
+
+  getSupervisorOrders(id, status, page, limit) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL +
+        `/supervisor/orders/${id}?page=${page}&limit=${limit}&status=${status}`,
+      httpOptions
+    );
+  }
+
+  getSupervisorOrdersExcel(id, status) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL +
+        `/supervisor/orders-excel/${id}?status=${status}`,
+      httpOptions
+    );
+  }
+
+
+  getProviderEmployees(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL +
+        `/supervisor/employees/${id}`,
       httpOptions
     );
   }
@@ -1062,7 +1324,7 @@ export class ConstantServiceWrapper {
   getUserFollowing(id, page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1079,7 +1341,7 @@ export class ConstantServiceWrapper {
   getTimeProviderList(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1095,7 +1357,7 @@ export class ConstantServiceWrapper {
   deleteTime(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1112,7 +1374,7 @@ export class ConstantServiceWrapper {
   addTime(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1129,7 +1391,7 @@ export class ConstantServiceWrapper {
   updateTime(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1147,7 +1409,7 @@ export class ConstantServiceWrapper {
   getEmployees(page, limit, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1164,7 +1426,7 @@ export class ConstantServiceWrapper {
   getSingleEmployee(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1180,7 +1442,7 @@ export class ConstantServiceWrapper {
   getEmployeeExcel(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1188,7 +1450,7 @@ export class ConstantServiceWrapper {
       }),
     };
     return this.http.post(
-      appConstant.BASE_URL + `/employee/employee-excel`,
+      appConstant.BASE_URL + `/users/employee-excel`,
       JSON.stringify(content),
       httpOptions
     );
@@ -1197,7 +1459,7 @@ export class ConstantServiceWrapper {
   blockUnblockEmployee(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1214,7 +1476,7 @@ export class ConstantServiceWrapper {
   updateEmployee(conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -1230,7 +1492,7 @@ export class ConstantServiceWrapper {
   addEmployee(conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -1246,7 +1508,7 @@ export class ConstantServiceWrapper {
   sendEmplyeeSMS(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1260,10 +1522,10 @@ export class ConstantServiceWrapper {
     );
   }
 
-  getEmployeesOrders(id, page, limit) {
+  getEmployeesOrders(id, status, page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1272,7 +1534,24 @@ export class ConstantServiceWrapper {
     };
     return this.http.get(
       appConstant.BASE_URL +
-        `/employee/orders/${id}?page=${page}&limit=${limit}`,
+        `/employee/orders/${id}?page=${page}&limit=${limit}&status=${status}`,
+      httpOptions
+    );
+  }
+
+  getEmployeesOrdersExcel(id, status) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL +
+        `/employee/orders-excel/${id}?status=${status}`,
       httpOptions
     );
   }
@@ -1280,7 +1559,7 @@ export class ConstantServiceWrapper {
   getEmployeesByStore(store_id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1297,7 +1576,7 @@ export class ConstantServiceWrapper {
   getAllProviders() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1313,7 +1592,7 @@ export class ConstantServiceWrapper {
   getProviders(page, limit, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1330,7 +1609,7 @@ export class ConstantServiceWrapper {
   getSingleProvider(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1346,7 +1625,7 @@ export class ConstantServiceWrapper {
   getProviderExcel(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1363,7 +1642,7 @@ export class ConstantServiceWrapper {
   sendProviderSMS(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1380,7 +1659,7 @@ export class ConstantServiceWrapper {
   sendProviderNotification(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1397,7 +1676,7 @@ export class ConstantServiceWrapper {
   updateProviders(conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -1413,7 +1692,7 @@ export class ConstantServiceWrapper {
   addProviders(conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -1429,7 +1708,7 @@ export class ConstantServiceWrapper {
   blockUnblockProviders(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1446,7 +1725,7 @@ export class ConstantServiceWrapper {
   deleteProvider(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1460,11 +1739,196 @@ export class ConstantServiceWrapper {
     );
   }
 
+  // Supervisor
+  getAllSupervisor() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + `/users/supervisor/list`,
+      httpOptions
+    );
+  }
+
+  getSupervisor(page, limit, content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + `/users/supervisor?page=${page}&limit=${limit}`,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
+  getSingleSupervisor(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + `/supervisor/details/` + id,
+      httpOptions
+    );
+  }
+
+  getSupervisorExcel(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + `/users/supervisor-excel`,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
+  sendSupervisorSMS(id, content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/supervisor/sms/" + id,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
+  sendSupervisorNotification(id, content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/supervisor/notification/" + id,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
+  updateSupervisor(conent) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/supervisor/update",
+      conent,
+      httpOptions
+    );
+  }
+
+  addSupervisor(conent) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/supervisor/add",
+      conent,
+      httpOptions
+    );
+  }
+
+  blockUnblockSupervisor(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/supervisor/block",
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
+
+  blockUnblockAdmin(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/admin/block",
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
+  deleteSupervisor(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + "/supervisor/delete",
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
   //products
   getAllProductsList() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1480,7 +1944,7 @@ export class ConstantServiceWrapper {
   getProductsList(page, limit, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1497,7 +1961,7 @@ export class ConstantServiceWrapper {
   getProductsListExcel(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1514,7 +1978,7 @@ export class ConstantServiceWrapper {
   deleteProduct(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1531,7 +1995,7 @@ export class ConstantServiceWrapper {
   updateProduct(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -1546,7 +2010,7 @@ export class ConstantServiceWrapper {
   addProduct(conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "multipart/form-data",
+        Content: "multipart/form-data", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
         token: this.getMyToken(),
@@ -1562,7 +2026,7 @@ export class ConstantServiceWrapper {
   getSingleProduct(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1578,7 +2042,7 @@ export class ConstantServiceWrapper {
   getRateList(destination_id, type, page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1594,7 +2058,7 @@ export class ConstantServiceWrapper {
   getRateProviderList(destination_id, page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1610,7 +2074,7 @@ export class ConstantServiceWrapper {
   deleteImage(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1628,7 +2092,7 @@ export class ConstantServiceWrapper {
   getProductPlaceList(page, limit, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1646,7 +2110,7 @@ export class ConstantServiceWrapper {
   getProductPlaceListExcel(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1663,7 +2127,7 @@ export class ConstantServiceWrapper {
   deleteProductPlace(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1680,7 +2144,7 @@ export class ConstantServiceWrapper {
   updateProductPlace(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1697,7 +2161,7 @@ export class ConstantServiceWrapper {
   addProductPlace(conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1714,7 +2178,7 @@ export class ConstantServiceWrapper {
   getSingleProductPlace(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1731,7 +2195,7 @@ export class ConstantServiceWrapper {
   getSupplierPlaceList(body, page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1748,7 +2212,7 @@ export class ConstantServiceWrapper {
   getSingleSupplierPlace(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1764,7 +2228,7 @@ export class ConstantServiceWrapper {
   deleteSupplierPlace(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1781,7 +2245,7 @@ export class ConstantServiceWrapper {
   updateSupplierPlace(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1798,7 +2262,7 @@ export class ConstantServiceWrapper {
   addSupplierPlace(conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1816,7 +2280,7 @@ export class ConstantServiceWrapper {
   getOrders(page, limit, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1829,10 +2293,62 @@ export class ConstantServiceWrapper {
       httpOptions
     );
   }
+
+  getOrdersExcel(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + `/admin/orders-excel`,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
+  getOrderExcel(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + `/admin/orders-excel`,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+  
+  orders_earning(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + `/admin/orders-earning`,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
   updateOrderStatus(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1848,7 +2364,7 @@ export class ConstantServiceWrapper {
   deleteRate(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1864,7 +2380,7 @@ export class ConstantServiceWrapper {
   getOrdersRate(page, limit, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1882,7 +2398,7 @@ export class ConstantServiceWrapper {
   getTop10Notification() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1898,7 +2414,7 @@ export class ConstantServiceWrapper {
   getNotifications(page, limit, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1911,11 +2427,61 @@ export class ConstantServiceWrapper {
       httpOptions
     );
   }
+  getNotifications2(page, limit, content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + `/admin/notification2?page=${page}&limit=${limit}`,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
+  getExcelNotifications(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + `/admin/excel-notification`,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
+
+  getExcelNotifications2(content) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.post(
+      appConstant.BASE_URL + `/admin/excel-notification2`,
+      JSON.stringify(content),
+      httpOptions
+    );
+  }
 
   addNotifications(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1932,7 +2498,7 @@ export class ConstantServiceWrapper {
   addSingleNotifications(id, content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1947,10 +2513,10 @@ export class ConstantServiceWrapper {
   }
 
   //admins
-  getAdmins(page, limit) {
+  getAdmins(page, limit, obj) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1958,7 +2524,23 @@ export class ConstantServiceWrapper {
       }),
     };
     return this.http.get(
-      appConstant.BASE_URL + "/admin/list?page=" + page + "&limit=" + limit,
+      appConstant.BASE_URL + "/admin/list?page=" + page + "&limit=" + limit + "&name="+ obj.name + "&email=" + obj.email + "&phone_number=" + obj.phone_number,
+      httpOptions
+    );
+  }
+
+  getExcelAdmins(obj) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + "/admin/excel?name="+ obj.name + "&email=" + obj.email + "&phone_number=" + obj.phone_number,
       httpOptions
     );
   }
@@ -1966,7 +2548,7 @@ export class ConstantServiceWrapper {
   getSingleAdmins(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1982,7 +2564,7 @@ export class ConstantServiceWrapper {
   addAdmin(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -1999,7 +2581,7 @@ export class ConstantServiceWrapper {
   updateAdmin(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2016,7 +2598,7 @@ export class ConstantServiceWrapper {
   deleteAdmin(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2033,7 +2615,7 @@ export class ConstantServiceWrapper {
   updateMyProfile(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2051,7 +2633,7 @@ export class ConstantServiceWrapper {
   getTop10NewUsers() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2067,7 +2649,7 @@ export class ConstantServiceWrapper {
   getTop10Orders() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2083,7 +2665,7 @@ export class ConstantServiceWrapper {
   getCounterOrdersWithStatus() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2099,7 +2681,7 @@ export class ConstantServiceWrapper {
   getCounterUsers() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2115,7 +2697,7 @@ export class ConstantServiceWrapper {
   UsersproviderPerYear() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2128,10 +2710,10 @@ export class ConstantServiceWrapper {
     );
   }
 
-  getTopProductsCategory() {
+  getProviderTarget() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2139,7 +2721,7 @@ export class ConstantServiceWrapper {
       }),
     };
     return this.http.get(
-      appConstant.BASE_URL + "/home/getTopProductsCategory",
+      appConstant.BASE_URL + "/home/getProviderTarget",
       httpOptions
     );
   }
@@ -2147,7 +2729,7 @@ export class ConstantServiceWrapper {
   getTopProductsPlace() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2160,10 +2742,26 @@ export class ConstantServiceWrapper {
     );
   }
 
+  getSingleOrders(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Content: "application/json", "accept-language": this.getMyLang(),
+        Accept: "application/json",
+        "Content-Type": "application/json; charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        token: this.getMyToken(),
+      }),
+    };
+    return this.http.get(
+      appConstant.BASE_URL + `/admin/single-orders?id=${id}`,
+      httpOptions
+    );
+  }
+  
   getProviderOrdersPerYear() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2181,7 +2779,7 @@ export class ConstantServiceWrapper {
   getCoupon(page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2197,7 +2795,7 @@ export class ConstantServiceWrapper {
   getSingleCoupon(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2213,7 +2811,7 @@ export class ConstantServiceWrapper {
   addCoupon(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2230,7 +2828,7 @@ export class ConstantServiceWrapper {
   updateCoupon(id, conent) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2247,7 +2845,7 @@ export class ConstantServiceWrapper {
   deleteCoupon(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2265,7 +2863,7 @@ export class ConstantServiceWrapper {
   getMyMessages(page, limit) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2281,7 +2879,7 @@ export class ConstantServiceWrapper {
   replyMessage(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2298,7 +2896,7 @@ export class ConstantServiceWrapper {
   deleteMessage(id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2315,7 +2913,7 @@ export class ConstantServiceWrapper {
   hideShow(content) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2333,7 +2931,7 @@ export class ConstantServiceWrapper {
   getOrdersMap(status_id) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2349,7 +2947,7 @@ export class ConstantServiceWrapper {
   getUnCoveredMap() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
@@ -2365,7 +2963,7 @@ export class ConstantServiceWrapper {
   driversOnFirebase() {
     const httpOptions = {
       headers: new HttpHeaders({
-        Content: "application/json",
+        Content: "application/json", "accept-language": this.getMyLang(),
         Accept: "application/json",
         "Content-Type": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",

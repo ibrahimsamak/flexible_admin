@@ -11,6 +11,7 @@ import { ar } from "date-fns/locale";
 declare var require;
 const Swal = require("sweetalert2");
 import * as jsonexport from "jsonexport/dist";
+import { MomentDateFormatter } from "src/app/service/utils_function";
 
 @Component({
   selector: "app-clients",
@@ -18,9 +19,14 @@ import * as jsonexport from "jsonexport/dist";
   styleUrls: ["./clients.component.scss"],
 })
 export class ClientsComponent implements OnInit {
+  momentFormat = new MomentDateFormatter();
   showLoader = false;
   search_field = "full_name";
   search_value = "";
+  user_type = "";
+  dt_to="";
+  dt_from="";
+  work="";
   users = [];
   totalElements = 0;
   page = 0;
@@ -30,6 +36,7 @@ export class ClientsComponent implements OnInit {
   NOT_TITLe_TXT = "";
   NOT_MSG_TXT = "";
   userId = "";
+  works = []
   constructor(
     private helper: ConstantServiceWrapper,
     private modalService: NgbModal,
@@ -37,14 +44,36 @@ export class ClientsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getCategories()
     this.getUsers(this.page, this.limit);
   }
 
+  getCategories() {
+    this.helper.getType().subscribe((x) => {
+      this.works = x[appConstant.ITEMS] as any[];
+    });
+  }
+
+
   getUsers(page, limit) {
+    var _dt_from;
+    var _dt_to;
+    if (this.dt_from != "") {
+      let dt_from = this.momentFormat.format(this.dt_from as any);
+      _dt_from= dt_from;
+    }
+    if (this.dt_to != "") {
+      let dt_to = this.momentFormat.format(this.dt_to as any);
+      _dt_to = dt_to;
+    }
     this.helper
       .getUsers(page, limit, {
         search_field: this.search_field,
         search_value: this.search_value,
+        dt_from: _dt_from,
+        dt_to: _dt_to,
+        work:this.work,
+        user_type:this.user_type
       })
       .subscribe((x) => {
         if (x[appConstant.STATUS]) {
@@ -65,10 +94,24 @@ export class ClientsComponent implements OnInit {
   }
   search() {
     this.page = 0;
+    var _dt_from;
+    var _dt_to;
+    if (this.dt_from != "") {
+      let dt_from = this.momentFormat.format(this.dt_from as any);
+      _dt_from= dt_from;
+    }
+    if (this.dt_to != "") {
+      let dt_to = this.momentFormat.format(this.dt_to as any);
+      _dt_to = dt_to;
+    }
     this.helper
       .getUsers(this.page, this.limit, {
         search_field: this.search_field,
         search_value: this.search_value,
+        dt_from: _dt_from,
+        dt_to: _dt_to,
+        work:this.work,
+        user_type: this.user_type
       })
       .subscribe((x) => {
         if (x[appConstant.STATUS]) {
@@ -84,19 +127,35 @@ export class ClientsComponent implements OnInit {
 
   excel() {
     var fields = [];
+    var _dt_from;
+    var _dt_to;
+    if (this.dt_from != "") {
+      let dt_from = this.momentFormat.format(this.dt_from as any);
+      _dt_from= dt_from;
+    }
+    if (this.dt_to != "") {
+      let dt_to = this.momentFormat.format(this.dt_to as any);
+      _dt_to = dt_to;
+    }
     this.helper
       .getUsersExcel({
         search_field: this.search_field,
         search_value: this.search_value,
+        dt_from: _dt_from,
+        dt_to: _dt_to,
+        work:this.work,
       })
       .subscribe((res_data) => {
         let data = res_data["items"] as any[];
         data.forEach((user, index) => {
           fields.push({
             Name: "\ufeff" + user["full_name"],
+            Bio: "\ufeff" + user["bio"],    
             Phone: user["phone_number"],
             Email: user["email"],
             Address: "\ufeff" + user["address"],
+            Type: "\ufeff" + (user["register_type"] == 'personal' ? "فرد" : "شركة"),
+            Work: "\ufeff" + ((user["work"] != undefined && user["work"] != null) ? user["work"]["arName"] : ""),
           });
         });
 

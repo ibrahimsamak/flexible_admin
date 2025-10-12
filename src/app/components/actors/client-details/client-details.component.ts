@@ -10,8 +10,11 @@ import {
 import { ToastrService } from "ngx-toastr";
 import { ar } from "date-fns/locale";
 import { ActivatedRoute, Params } from "@angular/router";
+import { TranslateService } from "@ngx-translate/core";
 declare var require;
 const Swal = require("sweetalert2");
+import * as jsonexport from "jsonexport/dist";
+import { OrderDetailsPoPComponent } from "src/app/shared/components/order-details/order-details.component";
 
 @Component({
   selector: "app-client-details",
@@ -21,7 +24,7 @@ const Swal = require("sweetalert2");
 export class ClientDetailsComponent implements OnInit {
   public formData = new FormData();
   public zoom_m1: number = 13;
-
+  status = ""
   user_address = {};
   discount = 0;
   userDetails = {
@@ -34,6 +37,16 @@ export class ClientDetailsComponent implements OnInit {
     os: "",
     city_id: "",
     country_id: "",
+    streetName:"",
+    buildingNo:"",
+    floorNo:"",
+    flatNo:"",
+    createAt:"",
+    app_type:"",
+    register_type:"",
+    work:"",
+    city:"",
+    id_image:""
   };
   countries = [];
   cities = [];
@@ -59,16 +72,26 @@ export class ClientDetailsComponent implements OnInit {
   note = "";
   orderDetails = {};
   showLoader = false;
+  categoriesArr = []
+  works = []
   constructor(
     private helper: ConstantServiceWrapper,
     private modalService: NgbModal,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private translate: TranslateService,
   ) {}
 
   ngOnInit(): void {
-    this.getAllCountries();
+    this.getCityByCountryId('');
+    this.getCategories()
     this.getUserById();
+  }
+
+  getCategories() {
+    this.helper.getType().subscribe((x) => {
+      this.works = x[appConstant.ITEMS] as any[];
+    });
   }
 
   getUserAddress(id, page, limit) {
@@ -82,8 +105,8 @@ export class ClientDetailsComponent implements OnInit {
     });
   }
 
-  getOrders(id, page, limit) {
-    this.helper.getUserOrders(id, page, limit).subscribe((x) => {
+  getOrders(id, status, page, limit) {
+    this.helper.getUserOrders(id, status, page, limit).subscribe((x) => {
       if (x[appConstant.STATUS]) this.orders = x[appConstant.ITEMS] as any[];
       else this.toastr.error(x[appConstant.MESSAGE]);
     });
@@ -98,6 +121,8 @@ export class ClientDetailsComponent implements OnInit {
           if (x[appConstant.STATUS]) {
             let object = x[appConstant.ITEMS] as any;
             this.userDetails = object;
+            this.userDetails.app_type  = this.userDetails.app_type == 'customer' ? "عميل" : "مزود خدمة"
+            this.userDetails.register_type  = this.userDetails.register_type == 'personal' ? "فرد" : "شركة"
             this.orders = [];
             this.followings = [];
             this.addresses = [];
@@ -105,7 +130,7 @@ export class ClientDetailsComponent implements OnInit {
           } else this.toastr.error(x[appConstant.MESSAGE]);
         });
         this.getUserAddress(this.user_id, this.ratePage, this.rateLimit);
-        this.getOrders(this.user_id, this.orderPage, this.orderLimit);
+        this.getOrders(this.user_id, this.status, this.orderPage, this.orderLimit);
       }
     });
   }
@@ -132,8 +157,15 @@ export class ClientDetailsComponent implements OnInit {
     this.formData.append("city_id", this.userDetails.city_id);
     this.formData.append("os", this.userDetails.os);
     this.formData.append("phone_number", this.userDetails.phone_number);
-    this.formData.append("address", this.userDetails.address);
     this.formData.append("email", this.userDetails.email);
+   
+    this.formData.append("streetName", this.userDetails.streetName);
+    this.formData.append("flatNo", this.userDetails.flatNo);
+    this.formData.append("floorNo", this.userDetails.floorNo);
+    this.formData.append("buildingNo", this.userDetails.buildingNo);
+    this.formData.append("city", this.userDetails.city);
+    this.formData.append("address", this.userDetails.address);
+    this.formData.append("work", this.userDetails.work);
 
     this.showLoader = true;
     this.helper.updateUser(this.formData).subscribe(
@@ -173,22 +205,22 @@ export class ClientDetailsComponent implements OnInit {
       this.orderPage = 0;
       this.orderLimit = 10;
       this.orderCollectionCount = 0;
-      this.getOrders(this.user_id, this.orderPage, this.orderLimit);
+      this.getOrders(this.user_id, this.status, this.orderPage, this.orderLimit);
     }
-    if ($event.nextId === "tab-addresses") {
-      // $event.preventDefault();
-      this.ratePage = 0;
-      this.rateLimit = 10;
-      this.rateCollectionCount = 0;
-      this.rateSize = 0;
-      this.getUserAddress(this.user_id, this.ratePage, this.rateLimit);
-    }
+    // if ($event.nextId === "tab-addresses") {
+    //   // $event.preventDefault();
+    //   this.ratePage = 0;
+    //   this.rateLimit = 10;
+    //   this.rateCollectionCount = 0;
+    //   this.rateSize = 0;
+    //   this.getUserAddress(this.user_id, this.ratePage, this.rateLimit);
+    // }
   }
 
   public onOrderPageChange(pageNum: number): void {
     this.orderPage = pageNum - 1;
     this.helper
-      .getUserOrders(this.user_id, this.orderPage, this.orderLimit)
+      .getUserOrders(this.user_id, this.status, this.orderPage, this.orderLimit)
       .subscribe((x) => {
         let arr = x[appConstant.ITEMS] as any[];
         this.orderCollectionCount = x["pagination"]["totalElements"];
@@ -197,17 +229,17 @@ export class ClientDetailsComponent implements OnInit {
       });
   }
 
-  public onRatePageChange(pageNum: number): void {
-    this.ratePage = pageNum - 1;
-    this.helper
-      .getUserAddress(this.user_id, this.ratePage, this.rateLimit)
-      .subscribe((x) => {
-        let arr = x[appConstant.ITEMS] as any[];
-        this.rateCollectionCount = x["pagenation"]["totalElements"];
-        this.addresses = arr;
-        this.ratePage = pageNum;
-      });
-  }
+  // public onRatePageChange(pageNum: number): void {
+  //   this.ratePage = pageNum - 1;
+  //   this.helper
+  //     .getUserAddress(this.user_id, this.ratePage, this.rateLimit)
+  //     .subscribe((x) => {
+  //       let arr = x[appConstant.ITEMS] as any[];
+  //       this.rateCollectionCount = x["pagenation"]["totalElements"];
+  //       this.addresses = arr;
+  //       this.ratePage = pageNum;
+  //     });
+  // }
 
   openDetails(content, obj) {
     this.user_address = obj;
@@ -216,24 +248,74 @@ export class ClientDetailsComponent implements OnInit {
 
   openOrder(content, obj) {
     this.orderDetails = obj;
-    this.modalService.open(content, { size: "lg" });
-  }
+    const modalRef = this.modalService.open(OrderDetailsPoPComponent,{ size: "lg" })
+    modalRef.componentInstance.orderDetails = this.orderDetails;
+}
 
-  saveDiscount() {
+  changeStatus(statusId) {
+    this.status = statusId;
+    this.orderPage = 0;
+    this.getOrders(this.user_id, this.status, this.orderPage, this.orderLimit);
+  }
+  
+  excel() {
+    var fields = [];
     this.helper
-      .addAddressDiscount(this.user_address["_id"], {
-        discount: this.user_address["discount"],
-      })
-      .subscribe((x) => {
-        if (x[appConstant.STATUS] != true) {
-          this.toastr.error(x[appConstant.MESSAGE]);
-        } else {
-          this.toastr.success(x[appConstant.MESSAGE]);
-        }
-        if (this.rateSize == 1 && this.ratePage != 1)
-          this.ratePage = this.ratePage - 2;
-        else this.ratePage = this.ratePage - 1;
-        this.getUserAddress(this.user_id, this.ratePage, this.rateLimit);
+      .getProviderOrdersExcel(this.user_id, this.status)
+      .subscribe((res_data) => {
+        let data = res_data["items"] as any[];
+        data.forEach((user, index) => {
+          console.log( user["supervisor"])
+          fields.push({
+            "Order No": "\ufeff" + (user["order_no"]),
+            Name: "\ufeff" + ((user["user"] != undefined && user["user"] != null) ? user["user"]["full_name"] : ""),
+            Provider: "\ufeff" + ((user["provider"] != undefined && user["provider"] != null) ? user["provider"]["full_name"] : ""),
+            City: "\ufeff" + ((user["city"] != undefined && user["city"] != null) ? user["city"]["arName"] : ""),
+            Date: "\ufeff" + user["dt_date"],
+            Category: "\ufeff" + user["category"]["arName"],
+            Type: "\ufeff" + (user["order_type"] == 'service' ? "خدمة" : "وظيفة"),
+            Target: "\ufeff" + (user["offer_type"] == 'online' ? "عن بعد" : "في الموقع"),
+            Personality: "\ufeff" + (user["target"] == 'personal' ? "فرد" : "شركة"),
+            "Price time": "\ufeff" + (user["price_type"] == 'hourly' ? "ساعة" : "مبلغ"),
+            "Execution Type": "\ufeff" + (user["execution_type"] == 'limited' ? "محدود" : "غير محدود"),
+            Title: "\ufeff" + (user["title"]),
+            Desciption: "\ufeff" + (user["bio"]),
+            "Employee No": "\ufeff" + (user["employee_no"]),
+            "Days": "\ufeff" + (user["days"]),
+          });
+        });
+
+        jsonexport(fields, function (err, csv) {
+          if (err) return console.log(err);
+          var blob = new Blob(["\uFEFF" + csv], {
+            type: "text/csv;charset=utf-8",
+          });
+          var url = window.URL.createObjectURL(blob);
+          var element = document.createElement("a");
+          element.setAttribute("href", encodeURI(url));
+          element.setAttribute("download", "طلبات المستخدمين" + ".csv");
+          element.style.display = "none";
+          document.body.appendChild(element);
+          element.click();
+          document.body.removeChild(element);
+        });
       });
   }
+  // saveDiscount() {
+  //   this.helper
+  //     .addAddressDiscount(this.user_address["_id"], {
+  //       discount: this.user_address["discount"],
+  //     })
+  //     .subscribe((x) => {
+  //       if (x[appConstant.STATUS] != true) {
+  //         this.toastr.error(x[appConstant.MESSAGE]);
+  //       } else {
+  //         this.toastr.success(x[appConstant.MESSAGE]);
+  //       }
+  //       if (this.rateSize == 1 && this.ratePage != 1)
+  //         this.ratePage = this.ratePage - 2;
+  //       else this.ratePage = this.ratePage - 1;
+  //       this.getUserAddress(this.user_id, this.ratePage, this.rateLimit);
+  //     });
+  // }
 }
